@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Cryptomonnaies</title>
+    </head>
+
+    <body onload="recup_options()">
+        <header>
+            <h1>Cryptomonnaies</h1>
+        </header>
+        <select id="mySelect" onchange="onChange();">
+        </select>
+        <p id="infos">
+        </p>
+            <footer>
+            </footer>
+    <script>
+    function recup_options(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        console.log(myArr);
+        myArr["data"].sort((a,b)=> a.name.localeCompare(b.name) );
+        for(i = 0; i < myArr["data"].length; i++) {
+            var opt = document.createElement('option');
+            opt.value = myArr["data"][i].id;
+            opt.innerHTML = myArr["data"][i].name;
+            document.getElementById("mySelect").appendChild(opt);
+        }
+      }
+    };
+    xhttp.open("GET", "cryptomonnaies.json", true);
+    xhttp.send();
+
+    }
+    function onChange(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        for(i = 0; i < myArr["data"].length; i++) {
+            if(myArr["data"][i].id==document.getElementById("mySelect").value){
+                document.getElementById("infos").innerHTML = 
+                "<h2>Symbol : </h2>"+myArr["data"][i].symbol+"<br>"+"<h2>Price : </h2>"+myArr["data"][i]["quote"]["EUR"].price+" €<br>";
+            }
+            ;
+        }
+      }
+    };
+    xhttp.open("GET", "cryptomonnaies.json", true);
+    xhttp.send();
+
+    }
+    </script> 
+    </body>
+
+    </html>
