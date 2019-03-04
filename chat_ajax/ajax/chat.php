@@ -13,10 +13,8 @@ if (isset($_POST['method']) === true && empty($_POST['method']) === false) {
         } else  {
             foreach($messages as $message) {
             ?>
-                <div class="message">
-                    <a><?php echo $message['nom']; ?></a> dit :
-                    <p><?php echo nl2br($message['message']); ?></p>
-                </div>
+                    <a href="#" id="username<?php echo $message['id_utilisateur'];?>"><?php echo $message['nom']; ?></a> <p id="says">dit :</p>
+                    <p id="content"><?php echo nl2br($message['message']); ?></p>
             
             <?php
             }

@@ -3,6 +3,7 @@ class Chat extends Core {
     public function fetchMessages() {
         $this->query("
             SELECT  `messages`.`message`,
+                    `messages`.`id_utilisateur`,
                     `utilisateurs`.`nom`,
                     `utilisateurs`.`id`
             FROM    `messages`

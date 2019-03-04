@@ -1,1 +1,54 @@
-Ecrivez ici votre code HTML
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+
+    <div class="chat_window">
+        <div class="top_menu">
+            <div class="title">Chat - TP5 Exercice 2</div>
+        </div>
+        <ul class="messages">
+
+        </ul><div class="bottom_wrapper clearfix">
+            <div class="message_input_wrapper">
+                <input class="message_input" placeholder="Ecrivez votre message ici..."/></div>
+                <button id="text" onclick="chat.posterMessage($_GET('user_id'))">Envoyer</button>
+            </div>
+        </div>
+    </div>
+    <div class="message_template">
+        <li class="message">
+            <div class="avatar">
+
+            </div>
+            <div class="text_wrapper">
+                <div class="text">
+
+                </div>
+            </div>
+        </li>
+    </div>
+    <script src="js/object_creation.js" ></script>
+    <script>
+    function $_GET(param) {
+        var vars = {};
+        window.location.href.replace( location.hash, '' ).replace( 
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function( m, key, value ) { // callback
+                vars[key] = value !== undefined ? value : '';
+            }
+        );
+
+        if ( param ) {
+            return vars[param] ? vars[param] : null;	
+        }
+        return vars;
+        }
+</script>
+    </body>
+</html>

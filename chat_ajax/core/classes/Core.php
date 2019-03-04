@@ -4,7 +4,7 @@ class Core {
     private $rows;
 
     public function __construct() {
-        $this->db = new mysqli('localhost', 'root', 'usbw', 'chat_ajax');
+        $this->db = new mysqli('localhost', 'root', '', 'chat_ajax');
     }
 
     public function query($sql) {
